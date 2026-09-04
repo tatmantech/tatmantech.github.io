@@ -1,3 +1,5 @@
-_site
-.sass-cache
-.jekyll-metadata
+# Zola build output — never commit generated site output
+public/
+
+# Zola search index / sass cache artifacts (regenerated on build)
+sass_cache/

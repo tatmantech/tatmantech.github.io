@@ -1,0 +1,36 @@
+base_url = "https://blog.tatmantech.com"
+title = "Tatman Technologies Blog"
+description = "Practical automation, ML, and AI implementation for small and medium businesses and farms"
+theme = "radion"
+compile_sass = true
+generate_feeds = true
+build_search_index = true
+
+taxonomies = [
+    {name = "categories", feed = true},
+    {name = "tags", feed = true},
+]
+
+[markdown.highlighting]
+style = "class"
+dark_theme = "material-theme-palenight"
+light_theme = "everforest-light"
+
+[search]
+index_format = "elasticlunr_json"
+
+[extra]
+author = "James Tatman"
+github = "https://github.com/tatmantech"
+radion_menu = [
+    {url = "$BASE_URL/", name = "Home"},
+    {url = "$BASE_URL/categories", name = "Categories"},
+    {url = "$BASE_URL/tags", name = "Tags"},
+]
+radion_title = "Tatman Technologies Blog"
+codeblock = true
+latex = true
+enable_search = true
+theme = "toggle"
+favicon = true
+comments = false

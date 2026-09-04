@@ -1,0 +1,23 @@
+{%- component youtube(id, playlist="", autoplay=false, start_time_s="", captions=false, width=100) -%}
+{%- set youtube_url = "https://www.youtube.com/embed/" ~ id -%}
+{%- set_global yt_params = [] -%}
+{%- if playlist %}{% set_global yt_params = [...yt_params, "list=" ~ playlist] %}{% endif -%}
+{%- if autoplay %}{% set_global yt_params = [...yt_params, "autoplay=1"] %}{% endif -%}
+{%- if start_time_s %}{% set_global yt_params = [...yt_params, "start=" ~ start_time_s] %}{% endif -%}
+{%- if captions %}{% set_global yt_params = [...yt_params, "cc_load_policy=1"] %}{% endif -%}
+{%- if yt_params | length > 0 %}
+  {%- set youtube_url = youtube_url ~ "?" ~ (yt_params | join(sep="&")) %}
+{%- endif %}
+
+<div class="responsive-iframe"
+  style="width: 100%; max-width: {{ width }}%; margin: 0 auto; text-align: center;">
+  <iframe
+    src="{{ youtube_url }}"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+{%- endcomponent youtube -%}
