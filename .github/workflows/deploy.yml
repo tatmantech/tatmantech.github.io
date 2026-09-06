@@ -23,10 +23,18 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Build with Zola and upload Pages artifact
-        uses: getzola/github-pages@v1
+      - name: Build with Zola
+        run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace ghcr.io/getzola/zola:v0.23.3 build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
         with:
-          zola_version: v0.23.3
+          path: public
+          # Default retention is 1 day, which is too short for a human-approval
+          # review gate -- a build that sits waiting for approval over a weekend
+          # would expire before it can be deployed. 7 days matches our weekly
+          # review cadence.
+          retention-days: 7
 
   deploy:
     environment:
