@@ -1,4 +1,10 @@
-base_url = "https://blog.tatmantech.com"
+# TEMPORARY: blog.tatmantech.com's DNS is not yet pointed at GitHub Pages (still
+# resolves to an unrelated server -- confirmed 2026-09-06, returns 403 from nginx).
+# Zola bakes base_url into every asset URL at build time, so pointing it at a domain
+# that isn't live yet breaks all CSS/JS/icons on the site that IS live. Using the
+# working tatmantech.github.io URL until DNS is fixed -- see bd issue blogs-63t /
+# bd remember blog-tatmantech-com-dns-pending for the switch-back reminder.
+base_url = "https://tatmantech.github.io"
 title = "Tatman Technologies Blog"
 description = "Practical automation, ML, and AI implementation for small and medium businesses and farms"
 theme = "radion"
